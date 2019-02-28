@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">CityVenueViewer</string>
+    <string name="city_state">%s, %s</string>
+    <string name="placeholder">Placeholder</string>
+    <string name="bookmark">Bookmark</string>
+    <string name="thumbnail">Thumbnail</string>
+    <string name="venue_name">Venue Name</string>
+    <string name="venue_location">Venue Location</string>
+    <string name="venue_categories">Venue Categories</string>
+    <string name="empty_grid">There are no photos to display</string>
+</resources>

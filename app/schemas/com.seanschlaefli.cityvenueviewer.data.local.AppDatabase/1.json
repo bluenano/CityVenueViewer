@@ -1,0 +1,103 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "9be40e55b39a9a0896e5bc13f60f4955",
+    "entities": [
+      {
+        "tableName": "City",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`city_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT, `state` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "cityId",
+            "columnName": "city_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "state",
+            "columnName": "state",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "city_id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "BookmarkedVenue",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`venue_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `foursquare_venue_id` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "venueId",
+            "columnName": "venue_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "foursquareVenueId",
+            "columnName": "foursquare_venue_id",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "venue_id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "PhotoURL",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`photo_url_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `venue_id` TEXT, `photo_url` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "photoUrlId",
+            "columnName": "photo_url_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "venueId",
+            "columnName": "venue_id",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "photoURL",
+            "columnName": "photo_url",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "photo_url_id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"9be40e55b39a9a0896e5bc13f60f4955\")"
+    ]
+  }
+}
