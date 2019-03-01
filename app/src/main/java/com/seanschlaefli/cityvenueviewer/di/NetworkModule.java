@@ -1,7 +1,6 @@
 package com.seanschlaefli.cityvenueviewer.di;
 
 import com.seanschlaefli.cityvenueviewer.BuildConfig;
-import com.seanschlaefli.cityvenueviewer.data.remote.FoursquareDataSource;
 import com.seanschlaefli.cityvenueviewer.data.remote.FoursquareService;
 import dagger.Module;
 import dagger.Provides;
@@ -46,12 +45,4 @@ public class NetworkModule {
     FoursquareService provideFoursquareService(Retrofit retrofit) {
         return retrofit.create(FoursquareService.class);
     }
-
-    @Provides
-    @Singleton
-    FoursquareDataSource provideFoursquareDataSource(FoursquareService service) {
-        // need venue and photo listeners
-        return null;
-    }
-
 }

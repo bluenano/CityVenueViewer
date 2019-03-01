@@ -47,13 +47,13 @@ public class VenuePresenter implements OnFoursquareFinishedListener,
         dataSource.fetchVenues(city);
     }
 
-    private void requestPhotoData(Venue venue) {
-        dataSource.fetchPhotos(venue);
+    private void requestPhotoData(Venue venue, int position) {
+        dataSource.fetchPhotos(venue, position);
     }
 
     private void requestVenuesPhotoData(List<Venue> venues) {
-        for (Venue venue: venues) {
-            requestPhotoData(venue);
+        for (int i = 0; i < venues.size(); i++) {
+            requestPhotoData(venues.get(i), i);
         }
     }
 
@@ -72,20 +72,16 @@ public class VenuePresenter implements OnFoursquareFinishedListener,
 
     public void handleVenueClick(int position) {
         Venue venue = venues.get(position);
-        view.startPhotoActivity(PhotoActivity.newIntent(venue.getId(), venue.getName()));
+        view.startPhotoActivity(PhotoActivity.newIntent(venue.getId(), venue.getName(), position));
     }
 
-    public void updateVenueBookmark(String venueId) {
-        int position = findVenuePosition(venueId);
-        if (position != -1) {
-            Venue venue = venues.get(position);
-            if (venue != null) {
-                BookmarkedVenue bookmarked = bookmarkInteractor.getBookmarkedVenue(venueId);
-                venue.setBookmarked(bookmarked != null);
-                view.updateAdapter(position);
-            }
+    public void updateVenueBookmark(int position) {
+        Venue venue = venues.get(position);
+        if (venue != null) {
+            BookmarkedVenue bookmarked = bookmarkInteractor.getBookmarkedVenue(venue.getId());
+            venue.setBookmarked(bookmarked != null);
+            view.updateAdapter(position);
         }
-
     }
 
     public void clearPhotoURLs() {
@@ -111,17 +107,6 @@ public class VenuePresenter implements OnFoursquareFinishedListener,
         }
     }
 
-    private int findVenuePosition(String venueId) {
-        int position = -1;
-        for (int i = 0; i < venues.size(); i++) {
-            Venue current = venues.get(i);
-            if (venueId.equals(current.getId())) {
-                return i;
-            }
-        }
-        return position;
-    }
-
     @Override
     public void onVenuesLoadFinished(VenuesByCity venuesByCity) {
         if (venuesByCity != null) {
@@ -138,11 +123,10 @@ public class VenuePresenter implements OnFoursquareFinishedListener,
     }
 
     @Override
-    public void onPhotosLoadFinished(Venue venue, PhotosByVenue photos) {
+    public void onPhotosLoadFinished(Venue venue, PhotosByVenue photos, int position) {
         List<String> photoUrls = photos.getPhotoUrls();
         if (photoUrls.size() > 0) {
             venue.setThumbnailUrl(photoUrls.get(0));
-            int position = findVenuePosition(venue.getId());
             view.updateAdapter(position);
             savePhotoURLs(venue.getId(), photos);
         }

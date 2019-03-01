@@ -22,11 +22,13 @@ public class PhotoActivity extends AppCompatActivity implements PhotoView {
 
     public static String EXTRA_VENUE_ID = "venue_id";
     public static String EXTRA_VENUE_NAME = "venue_name";
+    public static String EXTRA_VENUE_POSITION = "venue_position";
 
     private GridView grid;
     private ImageView bookmark;
     private TextView emptyGrid;
     private String venueId;
+    private int venuePosition;
 
     @Inject
     PhotoPresenter presenter;
@@ -45,6 +47,7 @@ public class PhotoActivity extends AppCompatActivity implements PhotoView {
         Intent intent = getIntent();
         String name = null;
         if (intent != null) {
+            venuePosition = intent.getIntExtra(EXTRA_VENUE_POSITION, -1);
             venueId = intent.getStringExtra(EXTRA_VENUE_ID);
             name = intent.getStringExtra(EXTRA_VENUE_NAME);
         }
@@ -71,15 +74,16 @@ public class PhotoActivity extends AppCompatActivity implements PhotoView {
 
     @Override
     public void onBackPressed() {
-        Intent intent = VenueActivity.newReturnIntent(venueId);
+        Intent intent = VenueActivity.newReturnIntent(venuePosition);
         setResult(RESULT_OK, intent);
         finish();
     }
 
-    public static Intent newIntent(String venueId, String venueName) {
+    public static Intent newIntent(String venueId, String venueName, int venuePosition) {
         Intent intent = new Intent(App.getContext(), PhotoActivity.class);
         intent.putExtra(EXTRA_VENUE_ID, venueId);
         intent.putExtra(EXTRA_VENUE_NAME, venueName);
+        intent.putExtra(EXTRA_VENUE_POSITION, venuePosition);
         return intent;
     }
 

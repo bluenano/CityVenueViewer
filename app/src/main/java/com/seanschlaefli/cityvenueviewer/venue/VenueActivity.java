@@ -19,7 +19,7 @@ import javax.inject.Inject;
 public class VenueActivity extends AppCompatActivity implements VenueView {
 
     private static final String EXTRA_CITY_ID = "city_id";
-    private static final String EXTRA_VENUE_ID = "venue_id";
+    private static final String EXTRA_VENUE_POSITION = "venue_position";
     private static final int PHOTO_REQUEST_CODE = 1;
 
     private RecyclerView recyclerView;
@@ -75,9 +75,9 @@ public class VenueActivity extends AppCompatActivity implements VenueView {
         return intent;
     }
 
-    public static Intent newReturnIntent(String venueId) {
+    public static Intent newReturnIntent(int position) {
         Intent intent = new Intent();
-        intent.putExtra(EXTRA_VENUE_ID, venueId);
+        intent.putExtra(EXTRA_VENUE_POSITION, position);
         return intent;
     }
 
@@ -85,8 +85,10 @@ public class VenueActivity extends AppCompatActivity implements VenueView {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if (requestCode == PHOTO_REQUEST_CODE) {
             if (resultCode == RESULT_OK && data != null) {
-                String venueId = data.getStringExtra(EXTRA_VENUE_ID);
-                presenter.updateVenueBookmark(venueId);
+                int position = data.getIntExtra(EXTRA_VENUE_POSITION, -1);
+                if (position != -1) {
+                    presenter.updateVenueBookmark(position);
+                }
             }
         }
     }
@@ -114,5 +116,4 @@ public class VenueActivity extends AppCompatActivity implements VenueView {
     public void updateAdapter(int position) {
         adapter.notifyItemChanged(position);
     }
-
 }

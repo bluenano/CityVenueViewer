@@ -48,7 +48,7 @@ public class FoursquareDataSource {
         });
     }
 
-    public void fetchPhotos(final Venue venue) {
+    public void fetchPhotos(final Venue venue, int position) {
         Map<String, String> options = getRequiredOptionsMap();
         options.put(BuildConfig.PARAMETER_LIMIT, BuildConfig.PHOTO_LIMIT);
         Call<PhotosByVenue> call = service.getPhotosByVenue(venue.getId(), options);
@@ -56,7 +56,7 @@ public class FoursquareDataSource {
             @Override
             public void onResponse(@NonNull Call<PhotosByVenue> call, @NonNull Response<PhotosByVenue> response) {
                 if (response.isSuccessful() && response.body() != null) {
-                    photoListener.onPhotosLoadFinished(venue, response.body());
+                    photoListener.onPhotosLoadFinished(venue, response.body(), position);
                 }
             }
 
