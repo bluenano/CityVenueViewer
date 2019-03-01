@@ -1,8 +1,8 @@
 package com.seanschlaefli.cityvenueviewer.venue;
 
 import com.seanschlaefli.cityvenueviewer.bookmark.BookmarkInteractor;
-import com.seanschlaefli.cityvenueviewer.data.local.CityDao;
-import com.seanschlaefli.cityvenueviewer.data.local.PhotoURLDao;
+import com.seanschlaefli.cityvenueviewer.data.local.dao.CityDao;
+import com.seanschlaefli.cityvenueviewer.data.local.dao.PhotoURLDao;
 import dagger.Binds;
 import dagger.Module;
 import dagger.Provides;

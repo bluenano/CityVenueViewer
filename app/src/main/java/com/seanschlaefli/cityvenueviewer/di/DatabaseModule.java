@@ -4,9 +4,9 @@ import android.app.Application;
 import androidx.room.Room;
 import com.seanschlaefli.cityvenueviewer.bookmark.BookmarkInteractor;
 import com.seanschlaefli.cityvenueviewer.data.local.AppDatabase;
-import com.seanschlaefli.cityvenueviewer.data.local.BookmarkedVenueDao;
-import com.seanschlaefli.cityvenueviewer.data.local.CityDao;
-import com.seanschlaefli.cityvenueviewer.data.local.PhotoURLDao;
+import com.seanschlaefli.cityvenueviewer.data.local.dao.BookmarkedVenueDao;
+import com.seanschlaefli.cityvenueviewer.data.local.dao.CityDao;
+import com.seanschlaefli.cityvenueviewer.data.local.dao.PhotoURLDao;
 import dagger.Module;
 import dagger.Provides;
 

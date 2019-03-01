@@ -2,7 +2,7 @@ package com.seanschlaefli.cityvenueviewer.data.remote;
 
 import androidx.annotation.NonNull;
 import com.seanschlaefli.cityvenueviewer.BuildConfig;
-import com.seanschlaefli.cityvenueviewer.data.local.City;
+import com.seanschlaefli.cityvenueviewer.data.local.entity.City;
 import com.seanschlaefli.cityvenueviewer.data.remote.model.venue.Venue;
 import com.seanschlaefli.cityvenueviewer.data.remote.model.venue.VenuesByCity;
 import com.seanschlaefli.cityvenueviewer.data.remote.model.venue.photo.PhotosByVenue;
@@ -56,7 +56,7 @@ public class FoursquareDataSource {
             @Override
             public void onResponse(@NonNull Call<PhotosByVenue> call, @NonNull Response<PhotosByVenue> response) {
                 if (response.isSuccessful() && response.body() != null) {
-                    photoListener.onPhotosLoadFinished(venue, response.body(), position);
+                    photoListener.onPhotosLoadFinished(venue, position, response.body());
                 }
             }
 
@@ -74,5 +74,4 @@ public class FoursquareDataSource {
         options.put(BuildConfig.FOURSQUARE_PARAMETER_VERSIONING, BuildConfig.FOURSQUARE_VERSIONING);
         return options;
     }
-
 }

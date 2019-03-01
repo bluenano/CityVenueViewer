@@ -1,6 +1,7 @@
-package com.seanschlaefli.cityvenueviewer.data.local;
+package com.seanschlaefli.cityvenueviewer.data.local.dao;
 
 import androidx.room.*;
+import com.seanschlaefli.cityvenueviewer.data.local.entity.BookmarkedVenue;
 
 import java.util.List;
 

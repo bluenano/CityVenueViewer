@@ -1,6 +1,6 @@
 package com.seanschlaefli.cityvenueviewer.city;
 
-import com.seanschlaefli.cityvenueviewer.data.local.CityDao;
+import com.seanschlaefli.cityvenueviewer.data.local.dao.CityDao;
 import dagger.Binds;
 import dagger.Module;
 import dagger.Provides;

@@ -2,8 +2,8 @@ package com.seanschlaefli.cityvenueviewer;
 
 import com.seanschlaefli.cityvenueviewer.city.CityPresenter;
 import com.seanschlaefli.cityvenueviewer.city.CityView;
-import com.seanschlaefli.cityvenueviewer.data.local.City;
-import com.seanschlaefli.cityvenueviewer.data.local.CityDao;
+import com.seanschlaefli.cityvenueviewer.data.local.entity.City;
+import com.seanschlaefli.cityvenueviewer.data.local.dao.CityDao;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

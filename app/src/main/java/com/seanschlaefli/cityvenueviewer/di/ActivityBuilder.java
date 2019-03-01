@@ -20,5 +20,4 @@ public abstract class ActivityBuilder {
 
     @ContributesAndroidInjector(modules = PhotoActivityModule.class)
     abstract PhotoActivity bindPhotoActivity();
-
 }

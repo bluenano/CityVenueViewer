@@ -1,6 +1,10 @@
 package com.seanschlaefli.cityvenueviewer.venue;
 
-import com.seanschlaefli.cityvenueviewer.data.local.*;
+import com.seanschlaefli.cityvenueviewer.data.local.dao.CityDao;
+import com.seanschlaefli.cityvenueviewer.data.local.dao.PhotoURLDao;
+import com.seanschlaefli.cityvenueviewer.data.local.entity.BookmarkedVenue;
+import com.seanschlaefli.cityvenueviewer.data.local.entity.City;
+import com.seanschlaefli.cityvenueviewer.data.local.entity.PhotoURL;
 import com.seanschlaefli.cityvenueviewer.data.remote.FoursquareDataSource;
 import com.seanschlaefli.cityvenueviewer.data.remote.FoursquareService;
 import com.seanschlaefli.cityvenueviewer.data.remote.model.venue.Venue;
@@ -123,7 +127,7 @@ public class VenuePresenter implements OnFoursquareFinishedListener,
     }
 
     @Override
-    public void onPhotosLoadFinished(Venue venue, PhotosByVenue photos, int position) {
+    public void onPhotosLoadFinished(Venue venue, int position, PhotosByVenue photos) {
         List<String> photoUrls = photos.getPhotoUrls();
         if (photoUrls.size() > 0) {
             venue.setThumbnailUrl(photoUrls.get(0));

@@ -1,9 +1,13 @@
 package com.seanschlaefli.cityvenueviewer.data.local;
 
-import android.content.Context;
 import androidx.room.Database;
-import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import com.seanschlaefli.cityvenueviewer.data.local.dao.BookmarkedVenueDao;
+import com.seanschlaefli.cityvenueviewer.data.local.dao.CityDao;
+import com.seanschlaefli.cityvenueviewer.data.local.dao.PhotoURLDao;
+import com.seanschlaefli.cityvenueviewer.data.local.entity.BookmarkedVenue;
+import com.seanschlaefli.cityvenueviewer.data.local.entity.City;
+import com.seanschlaefli.cityvenueviewer.data.local.entity.PhotoURL;
 
 @Database(entities = {City.class,
         BookmarkedVenue.class,
@@ -11,31 +15,7 @@ import androidx.room.RoomDatabase;
           version = 1
 )
 public abstract class AppDatabase extends RoomDatabase {
-
     public abstract CityDao cityDao();
     public abstract BookmarkedVenueDao bookmarkedVenueDao();
     public abstract PhotoURLDao photoURLDao();
-
-    private static AppDatabase INSTANCE;
-
-    public static AppDatabase getDatabase(final Context context) {
-        synchronized (AppDatabase.class) {
-            if (INSTANCE == null) {
-                INSTANCE = buildDatabase(context);
-            }
-        }
-        return INSTANCE;
-    }
-
-    private static AppDatabase buildDatabase(final Context context) {
-        return Room.databaseBuilder(context,
-                AppDatabase.class,
-                "cityvenueviewer.db")
-                .fallbackToDestructiveMigration()
-                // Room will throw an exception if you run queries on the main thread without this
-                // typically I write AsyncTask implementations and pass callback interfaces
-                // to implement queries off the main thread
-                .allowMainThreadQueries()
-                .build();
-    }
 }

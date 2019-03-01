@@ -5,8 +5,8 @@ import android.content.Context;
 import android.util.Log;
 import androidx.test.core.app.ApplicationProvider;
 import com.seanschlaefli.cityvenueviewer.data.local.AppDatabase;
-import com.seanschlaefli.cityvenueviewer.data.local.PhotoURL;
-import com.seanschlaefli.cityvenueviewer.data.local.PhotoURLDao;
+import com.seanschlaefli.cityvenueviewer.data.local.entity.PhotoURL;
+import com.seanschlaefli.cityvenueviewer.data.local.dao.PhotoURLDao;
 
 import org.junit.After;
 import org.junit.Before;

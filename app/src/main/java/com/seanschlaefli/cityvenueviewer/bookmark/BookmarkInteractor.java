@@ -1,7 +1,7 @@
 package com.seanschlaefli.cityvenueviewer.bookmark;
 
-import com.seanschlaefli.cityvenueviewer.data.local.BookmarkedVenue;
-import com.seanschlaefli.cityvenueviewer.data.local.BookmarkedVenueDao;
+import com.seanschlaefli.cityvenueviewer.data.local.entity.BookmarkedVenue;
+import com.seanschlaefli.cityvenueviewer.data.local.dao.BookmarkedVenueDao;
 
 import javax.inject.Inject;
 

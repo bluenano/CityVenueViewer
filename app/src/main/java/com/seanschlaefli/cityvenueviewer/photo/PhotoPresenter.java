@@ -1,9 +1,9 @@
 package com.seanschlaefli.cityvenueviewer.photo;
 
-import com.seanschlaefli.cityvenueviewer.data.local.BookmarkedVenue;
-import com.seanschlaefli.cityvenueviewer.data.local.PhotoURL;
+import com.seanschlaefli.cityvenueviewer.data.local.entity.BookmarkedVenue;
+import com.seanschlaefli.cityvenueviewer.data.local.entity.PhotoURL;
 import com.seanschlaefli.cityvenueviewer.bookmark.BookmarkInteractor;
-import com.seanschlaefli.cityvenueviewer.data.local.PhotoURLDao;
+import com.seanschlaefli.cityvenueviewer.data.local.dao.PhotoURLDao;
 
 import javax.inject.Inject;
 import java.util.ArrayList;

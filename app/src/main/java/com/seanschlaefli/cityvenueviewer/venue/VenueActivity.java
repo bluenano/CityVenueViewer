@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.seanschlaefli.cityvenueviewer.App;
 import com.seanschlaefli.cityvenueviewer.BuildConfig;
 import com.seanschlaefli.cityvenueviewer.R;
-import com.seanschlaefli.cityvenueviewer.data.local.City;
 import dagger.android.AndroidInjection;
 
 import javax.inject.Inject;
@@ -69,9 +68,9 @@ public class VenueActivity extends AppCompatActivity implements VenueView {
         recyclerView.addItemDecoration(horizontalLines);
     }
 
-    public static Intent newIntent(City city) {
+    public static Intent newIntent(long cityId) {
         Intent intent = new Intent(App.getContext(), VenueActivity.class);
-        intent.putExtra(EXTRA_CITY_ID, city.getId());
+        intent.putExtra(EXTRA_CITY_ID, cityId);
         return intent;
     }
 

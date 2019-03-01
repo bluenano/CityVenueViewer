@@ -1,4 +1,4 @@
-package com.seanschlaefli.cityvenueviewer.data.local;
+package com.seanschlaefli.cityvenueviewer.data.local.entity;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
@@ -17,5 +17,4 @@ public class BookmarkedVenue {
 
     @ColumnInfo(name = "foursquare_venue_id")
     public String foursquareVenueId;
-
 }

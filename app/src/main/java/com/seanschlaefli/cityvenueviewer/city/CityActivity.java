@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.seanschlaefli.cityvenueviewer.R;
-import com.seanschlaefli.cityvenueviewer.data.local.City;
 import com.seanschlaefli.cityvenueviewer.venue.VenueActivity;
 import dagger.android.AndroidInjection;
 
@@ -31,8 +30,8 @@ public class CityActivity extends AppCompatActivity implements CityView {
     }
 
     @Override
-    public void startVenueActivity(City city) {
-        Intent intent = VenueActivity.newIntent(city);
+    public void startVenueActivity(long cityId) {
+        Intent intent = VenueActivity.newIntent(cityId);
         startActivity(intent);
     }
 
